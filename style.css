@@ -10,26 +10,34 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: #090909;
   height: 100vh;
+  display: flex;
   align-items: center;
-  display: grid;
   justify-content: center;
+  flex-direction: column;
+  padding: 20px;
 }
 
 .card-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 40px;
+  justify-content: center;
+  align-items: center;
 }
 
 .card {
-  width: 400px;
+  width: 100%;
+  max-width: 350px; /* Impede que os cartões fiquem muito largos */
   cursor: pointer;
+  perspective: 1000px;
 }
 
 .card-content {
   position: relative;
   padding: 15rem 5rem;
   transform-style: preserve-3d;
-  transition: transform 3s;
+  transition: transform 1s ease-in-out;
+  min-height: 400px; /* Mantém uma altura mínima para não ficar bugado */
 }
 
 .card:hover .card-content,
@@ -59,11 +67,13 @@ body {
   background-blend-mode: overlay;
   color: white;
 }
+
 .card-front {
-  background-image: url(https://wallpaper.forfun.com/fetch/fe/fe90c3e7e81d54cb43be372add4f006d.jpeg);
   background-color: rgba(255, 163, 42, 0.2);
   align-items: center;
+  background-image: url(https://wallpaper.forfun.com/fetch/fe/fe90c3e7e81d54cb43be372add4f006d.jpeg);
 }
+
 .card-front::before {
   content: "";
   position: absolute;
@@ -71,19 +81,23 @@ body {
   border: 3px solid yellow;
   transform: translateZ(2rem);
 }
+
 .title {
   font-family: "Teko", sans-serif;
-  font-size: 4.5rem;
+  font-size: 4rem;
   text-transform: uppercase;
   line-height: 120%;
-  transform: translateZ(4.4rem);
+  transform: translateZ(4rem);
+  text-align: center;
 }
+
 .sub-title {
   font-size: 0.75rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 3px;
   transform: translateZ(3rem);
+  text-align: center;
 }
 
 .card-back {
@@ -91,20 +105,23 @@ body {
   transform: rotateY(180deg);
   gap: 0.5rem;
 }
+
 .back-title {
   font-family: "Teko", sans-serif;
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 600;
   color: yellow;
   text-transform: uppercase;
   align-self: center;
   transform: translateZ(2rem);
+  text-align: center;
 }
 
 .card-back span {
   font-weight: 600;
   color: yellow;
 }
+
 .btn {
   text-decoration: none;
   font-weight: 500;
@@ -118,15 +135,18 @@ body {
   transform: translateZ(2rem);
   transition: 0.3s ease;
 }
+
 .btn:hover {
   background-color: rgb(185, 164, 0);
   color: white;
   border: 2px solid rgb(185, 164, 0);
 }
 
+/* Personalizações para diferentes cards */
 .hulk .card-front {
   background-image: url(https://i.pinimg.com/736x/af/49/66/af4966442834aec1025a662c5c269179.jpg);
 }
+
 .hulk .card-back {
   background-image: url(https://img.cdndsgni.com/preview/11922986.jpg);
 }
@@ -134,22 +154,34 @@ body {
 .iron-man .card-front {
   background-image: url(https://static.significados.com.br/foto/flor-de-girassol-og.jpg?class=ogImageSquare);
 }
+
 .iron-man .card-back {
   background-image: url(https://i.pinimg.com/originals/3c/1e/a5/3c1ea50d40e6a28dd8c289a3537a8c0b.jpg);
 }
 
+/* Responsividade */
 @media (max-width: 768px) {
   .card-container {
     flex-direction: column;
     align-items: center;
+    gap: 20px;
   }
+
   .card {
     width: 90%;
+    max-width: 300px; /* Reduz o tamanho máximo no mobile */
   }
+
+  .card-content {
+    padding: 12rem 3rem;
+    min-height: 350px;
+  }
+
   .title {
     font-size: 3rem;
   }
+
   .back-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 }
