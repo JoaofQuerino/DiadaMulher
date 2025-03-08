@@ -1,6 +1,5 @@
-*,
-*::before,
-*::after {
+/* Reset de estilos para evitar inconsistências */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -20,27 +19,29 @@ body {
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 20px;
   justify-content: center;
   align-items: center;
+  max-width: 1000px;
 }
 
 .card {
-  width: 100%;
-  max-width: 350px; /* Impede que os cartões fiquem muito largos */
+  width: 300px;
+  height: 400px;
   cursor: pointer;
   perspective: 1000px;
+  display: flex;
+  position: relative;
 }
 
 .card-content {
   position: relative;
-  padding: 15rem 5rem;
+  width: 100%;
+  height: 100%;
   transform-style: preserve-3d;
-  transition: transform 1s ease-in-out;
-  min-height: 400px; /* Mantém uma altura mínima para não ficar bugado */
+  transition: transform 0.8s ease-in-out;
 }
 
-.card:hover .card-content,
 .card.active .card-content {
   transform: rotateY(180deg);
 }
@@ -48,29 +49,24 @@ body {
 .card-front,
 .card-back {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  width: 100%;
+  height: 100%;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   backface-visibility: hidden;
   transform-style: preserve-3d;
-}
-
-.card-front,
-.card-back {
   background-size: cover;
   background-repeat: no-repeat;
   background-blend-mode: overlay;
   color: white;
+  text-align: center;
 }
 
 .card-front {
   background-color: rgba(255, 163, 42, 0.2);
-  align-items: center;
   background-image: url(https://wallpaper.forfun.com/fetch/fe/fe90c3e7e81d54cb43be372add4f006d.jpeg);
 }
 
@@ -82,38 +78,35 @@ body {
   transform: translateZ(2rem);
 }
 
-.title {
-  font-family: "Teko", sans-serif;
-  font-size: 4rem;
-  text-transform: uppercase;
-  line-height: 120%;
-  transform: translateZ(4rem);
-  text-align: center;
-}
-
-.sub-title {
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  transform: translateZ(3rem);
-  text-align: center;
-}
-
 .card-back {
   background-image: url(https://i.pinimg.com/736x/0a/68/fb/0a68fba4d0ba4f1d6bed12540663eb74.jpg);
   transform: rotateY(180deg);
   gap: 0.5rem;
 }
 
+.title {
+  font-family: "Teko", sans-serif;
+  font-size: 2rem;
+  text-transform: uppercase;
+  line-height: 120%;
+  text-align: center;
+  transform: translateZ(4rem);
+}
+
+.sub-title {
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
 .back-title {
   font-family: "Teko", sans-serif;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: yellow;
   text-transform: uppercase;
-  align-self: center;
-  transform: translateZ(2rem);
   text-align: center;
 }
 
@@ -130,9 +123,7 @@ body {
   border: 2px solid white;
   border-radius: 100px;
   text-align: center;
-  align-self: center;
   margin-top: 1rem;
-  transform: translateZ(2rem);
   transition: 0.3s ease;
 }
 
@@ -142,46 +133,19 @@ body {
   border: 2px solid rgb(185, 164, 0);
 }
 
-/* Personalizações para diferentes cards */
-.hulk .card-front {
-  background-image: url(https://i.pinimg.com/736x/af/49/66/af4966442834aec1025a662c5c269179.jpg);
-}
-
-.hulk .card-back {
-  background-image: url(https://img.cdndsgni.com/preview/11922986.jpg);
-}
-
-.iron-man .card-front {
-  background-image: url(https://static.significados.com.br/foto/flor-de-girassol-og.jpg?class=ogImageSquare);
-}
-
-.iron-man .card-back {
-  background-image: url(https://i.pinimg.com/originals/3c/1e/a5/3c1ea50d40e6a28dd8c289a3537a8c0b.jpg);
-}
-
-/* Responsividade */
 @media (max-width: 768px) {
   .card-container {
     flex-direction: column;
     align-items: center;
-    gap: 20px;
   }
-
   .card {
-    width: 90%;
-    max-width: 300px; /* Reduz o tamanho máximo no mobile */
+    width: 260px;
+    height: 350px;
   }
-
-  .card-content {
-    padding: 12rem 3rem;
-    min-height: 350px;
-  }
-
   .title {
-    font-size: 3rem;
+    font-size: 1.6rem;
   }
-
   .back-title {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
   }
 }
