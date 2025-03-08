@@ -13,15 +13,19 @@ body {
   align-items: center;
   display: grid;
   justify-content: center;
+  padding: 20px;
 }
 
 .card-container {
   display: flex;
   gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
 }
 
 .card-content {
@@ -136,4 +140,18 @@ body {
   background-image: url(https://i.pinimg.com/originals/3c/1e/a5/3c1ea50d40e6a28dd8c289a3537a8c0b.jpg);
 }
 
-/* TODO: Style the butotns and borders of different cards */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    width: 90%;
+  }
+  .title {
+    font-size: 3rem;
+  }
+  .back-title {
+    font-size: 2rem;
+  }
+}
